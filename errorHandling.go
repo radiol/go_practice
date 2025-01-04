@@ -18,4 +18,9 @@ func main() {
 		log.Fatalln("Error reading file:", err)
 	}
 	fmt.Println(count, "bytes read:", string(data))
+
+	// one liner error handling
+	if err := os.Chdir("test"); err != nil {
+		log.Fatalln("Error changing directory:", err)
+	}
 }
