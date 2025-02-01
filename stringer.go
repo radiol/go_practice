@@ -10,6 +10,7 @@ type Personal struct {
 }
 
 // String()を実装することでfmt.Println()での出力をカスタマイズできる
+// 実装しない場合、{Mike 25}のように出力される
 func (p Personal) String() string {
 	return fmt.Sprintf("My name is %v", p.Name)
 }
