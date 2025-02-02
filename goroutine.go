@@ -8,7 +8,7 @@ import (
 func normal(s string) {
 	for i := 0; i < 5; i++ {
 		time.Sleep(100 * time.Millisecond)
-		println(s, i)
+		println("1:", s, i)
 	}
 }
 
@@ -17,7 +17,7 @@ func goroutine(s string, wg *sync.WaitGroup) {
 	defer wg.Done()
 	for i := 0; i < 5; i++ {
 		time.Sleep(200 * time.Millisecond)
-		println(s, i)
+		println("2:", s, i)
 	}
 }
 
