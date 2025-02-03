@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func producer(first chan int) {
+func producer(first chan<- int) {
 	// 出力をfirstチャンネルに送信してclose
 	defer close(first)
 	for i := 0; i < 10; i++ {
@@ -10,7 +10,9 @@ func producer(first chan int) {
 	}
 }
 
-func multi2(first chan int, second chan int) {
+// <-chanで明示的に読み込み専用を示す
+// chan<-で明示的に書き込み専用を示す
+func multi2(first <-chan int, second chan<- int) {
 	// firstチャンネルから受信した値を2倍してsecondチャンネルに送信してclose
 	defer close(second)
 	for v := range first {
@@ -18,7 +20,7 @@ func multi2(first chan int, second chan int) {
 	}
 }
 
-func multi4(second chan int, third chan int) {
+func multi4(second <-chan int, third chan<- int) {
 	// secondチャンネルから受信した値を4倍してthirdチャンネルに送信してclose
 	defer close(third)
 	for v := range second {
